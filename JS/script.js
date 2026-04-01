@@ -78,9 +78,9 @@ function updateDashboard() {
     return days >= 0 && days <= 7;
   }).length;
 
-  document.getElementById('d-total').textContent = total;
-  document.getElementById('d-active').textContent = active;
-  document.getElementById('d-expired').textContent = expired;
+  document.getElementById('d-total').textContent    = total;
+  document.getElementById('d-active').textContent   = active;
+  document.getElementById('d-expired').textContent  = expired;
   document.getElementById('d-expiring').textContent = expiring;
 }
 
@@ -133,7 +133,6 @@ document.getElementById('m-submit').addEventListener('click', function() {
   const gender = document.getElementById('m-gender').value;
   const pkg    = document.getElementById('m-package').value;
   const start  = document.getElementById('m-start').value;
-  const notes  = document.getElementById('m-notes').value.trim();
   const editId = document.getElementById('m-edit-id').value;
 
   if (!name || !phone || !gender || !start) {
@@ -153,7 +152,7 @@ document.getElementById('m-submit').addEventListener('click', function() {
         phone, gender,
         package: pkg,
         startAt: start,
-        expiredAt, notes
+        expiredAt
       };
       alert(`✅ Data member "${capitalizeWords(name)}" berhasil diperbarui!`);
     }
@@ -166,7 +165,7 @@ document.getElementById('m-submit').addEventListener('click', function() {
       phone, gender,
       package: pkg,
       startAt: start,
-      expiredAt, notes,
+      expiredAt,
       registeredAt: new Date().toISOString()
     };
     members.push(newMember);
@@ -189,7 +188,6 @@ function editMember(id) {
   document.getElementById('m-gender').value  = m.gender;
   document.getElementById('m-package').value = m.package;
   document.getElementById('m-start').value   = m.startAt;
-  document.getElementById('m-notes').value   = m.notes;
 
   document.getElementById('member-form-title').textContent = '✏️ Edit Member';
   document.getElementById('member-badge').textContent      = 'Edit';
@@ -231,7 +229,6 @@ function clearForm() {
   document.getElementById('m-gender').value  = '';
   document.getElementById('m-package').value = 'Basic';
   document.getElementById('m-start').value   = '';
-  document.getElementById('m-notes').value   = '';
 }
 
 document.getElementById('m-cancel').addEventListener('click', cancelEdit);
